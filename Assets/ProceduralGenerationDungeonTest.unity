@@ -325,10 +325,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 98c5b56105c37ee42ba801f1d508afcb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  size: {x: 3, y: 3}
+  size: {x: 5, y: 5}
   startPos: 0
-  room: {fileID: 1238867271334085188, guid: c6f1498b45c721746999641702b0b6b3, type: 3}
+  room: {fileID: 0}
+  largeRoom: {fileID: 4567503247212221336, guid: 953ebf0fedca068488597a0ad6568c26,
+    type: 3}
   offset: {x: 6, y: 6}
+  largeOffset: {x: 10, y: 10}
 --- !u!4 &1220791577
 Transform:
   m_ObjectHideFlags: 0

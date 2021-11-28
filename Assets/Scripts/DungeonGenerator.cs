@@ -12,7 +12,9 @@ public class DungeonGenerator : MonoBehaviour
     public Vector2 size;
     public int startPos = 0;
     public GameObject room;
+    public GameObject largeRoom;
     public Vector2 offset;
+    public Vector2 largeOffset;
 
     List<Cell> board;
     // Start is called before the first frame update
@@ -32,11 +34,19 @@ public class DungeonGenerator : MonoBehaviour
         {
             for(int j = 0; j < size.y; j++)
             {
-                var newDungeonRoom = Instantiate(room, new Vector3(j * offset.x, 0, i * offset.y), Quaternion.identity, transform).GetComponent<RoomBehaviour>();
-                Debug.Log("length" + board[Mathf.FloorToInt(i + j * size.x)].status.Length);    
-                newDungeonRoom.UpdateRoom(board[Mathf.FloorToInt(i + j * size.x)].status);
-                newDungeonRoom.name = (i + "Room" + "-" + "Variant " + j);
-                
+                               
+                if(room != null)
+                {
+                    var newDungeonRoom = Instantiate(room, new Vector3(j * offset.x, 0, i * offset.y), Quaternion.identity, transform).GetComponent<RoomBehaviour>();
+                    newDungeonRoom.UpdateRoom(board[Mathf.FloorToInt(i + j * size.x)].status);
+                    newDungeonRoom.name = (i + "Room" + "-" + "Variant " + j);
+                }
+                if(largeRoom != null)
+                {
+                    var largeDungeon = Instantiate(largeRoom, new Vector3(j * largeOffset.x, 0, i * largeOffset.y), Quaternion.identity, transform).GetComponent<RoomBehaviour>();
+                    largeDungeon.UpdateRoom(board[Mathf.FloorToInt(i + j * size.x)].status);
+                    largeDungeon.name = (i + "Room" + "-" + "Variant " + j);
+                }
             }
         }
     }
